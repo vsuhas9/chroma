@@ -72,7 +72,8 @@ if not is_client:
     import sqlite3
 
     if sqlite3.sqlite_version_info < (3, 35, 0):
-        if IN_COLAB:
+        import os
+        if IN_COLAB or (os.name == "posix"):
             # In Colab, hotswap to pysqlite-binary if it's too old
             import subprocess
             import sys
